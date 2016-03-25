@@ -1,0 +1,33 @@
+body {
+  margin-top: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.text-indent {
+  text-indent: 2em;
+}
+
+.margin-content {
+  margin-top: 200px;
+}
+
+.background-body {
+  background: url("/images/portal_bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.content-bg {
+  color: white;
+
+}
+
+.sub-title {
+  font-size: 1.2em;
+}

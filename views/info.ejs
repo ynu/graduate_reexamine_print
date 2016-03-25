@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>云南大学2016年招收硕士研究生复试通知书打印系统</title>
+    <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/stylesheets/style.css" rel="stylesheet"/>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?fbe306ff0049bb1730d7de55c6d56d5a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <!--
+    <p class="text-center lead">云南大学2016年招收硕士研究生复试通知书打印系统</p>
+    -->
+    <p class="text-center lead">基本信息</p>
+    <div class="row">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <td>身份证号</td>
+                <td><span><%= id_num %></span></td>
+            </tr>
+            <tr>
+                <td>考生编号</td>
+                <td><span><%= examination_num %></span></td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td><span><%= username %></span></td>
+            </tr>
+            <tr>
+                <td>院系</td>
+                <td><span><%= college %></span></td>
+            </tr>
+            <tr>
+                <td>专业</td>
+                <td><span><%= major %></span></td>
+            </tr>
+            <tr>
+                <td>专业代码</td>
+                <td><span><%= major_code %></span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <p class="text-center lead"><strong>云南大学2016年招收硕士研究生复试通知书</strong></p>
+
+        <p class="text-indent"><strong><u>&nbsp;&nbsp;<%= username %>&nbsp;&nbsp;</u></strong>考生：</p>
+
+        <p class="text-indent">经审核,同意你参加我校&nbsp;&nbsp;<strong><u>&nbsp;&nbsp;<%= college %> <%= major %>(<%= major_code %>)&nbsp;&nbsp;</u></strong>&nbsp;&nbsp;专业硕士研究生复试。请持本通知按照“复试须知”要求按时到云南大学报到并参加复试（各专业复试具体时间和地点请查询我校研究生院网站）。</p>
+
+        <p class="text-right">云南大学研究生院招生办公</p>
+
+        <p class="text-right">2016年3月25日</p>
+    </div>
+    <div class="row">
+        <a id="download_note" class="btn btn-primary" href="#" target="_blank">下载复试通知书</a>
+    </div>
+</div>
+<script src="/libs/jquery/dist/jquery.min.js"></script>
+<script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        var current_location = window.location.href;
+        var attached_file_location = current_location + "/" + <%= examination_num %> + ".docx";
+        $("#download_note").attr('href', attached_file_location);
+    });
+</script>
+</body>
+</html>

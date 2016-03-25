@@ -1,0 +1,6 @@
+# node application for graduate_reexamine_print
+graduate_reexamine_print:
+    image: ynuae/graduate_reexamine_print
+    ports:
+      - "50005:3000"
+    restart: always
