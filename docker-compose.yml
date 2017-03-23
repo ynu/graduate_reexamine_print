@@ -1,6 +1,40 @@
 # node application for graduate_reexamine_print
-graduate_reexamine_print:
+graduate_reexamine_print_cluster_1:
     image: ynuae/graduate_reexamine_print
     ports:
-      - "50005:3000"
+      - "50021:3000"
     restart: always
+    volumes:
+      - ./resources:/app/resources
+
+graduate_reexamine_print_cluster_2:
+    image: ynuae/graduate_reexamine_print
+    ports:
+      - "50022:3000"
+    restart: always
+    volumes:
+      - ./resources:/app/resources
+
+graduate_reexamine_print_cluster_3:
+    image: ynuae/graduate_reexamine_print
+    ports:
+      - "50023:3000"
+    restart: always
+    volumes:
+      - ./resources:/app/resources
+
+graduate_reexamine_print_cluster_4:
+    image: ynuae/graduate_reexamine_print
+    ports:
+      - "50024:3000"
+    restart: always
+    volumes:
+      - ./resources:/app/resources
+
+graduate_reexamine_print_cluster_5:
+    image: ynuae/graduate_reexamine_print
+    ports:
+      - "50025:3000"
+    restart: always
+    volumes:
+      - ./resources:/app/resources
