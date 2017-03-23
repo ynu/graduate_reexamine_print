@@ -35,14 +35,15 @@ var parse_xlsx_file = function () {
     // skip header
     for (var i = 1; i < data.length; i++) {
         var row = data[i];
-        if (row.length == 6) {
+        if (row.length == 7) {
             var format_row = {
                 'ZKZH': row[0],
                 'SFZH': row[1],
                 'XM': row[2],
                 'FSXY': row[3],
                 'FSZY': row[4],
-                'FSZYDM': row[5]
+                'FSZYDM': row[5],
+                'PYFS': row[6]
             };
             fastMap.add(format_row, format_row['ZKZH']);
         }
@@ -105,18 +106,20 @@ app.get("/:id_num/:examination_num/:username/:file", function (req, res) {
         }
         else {
             // check cache file
-            var generated_file_path = path.join(resources_root, 'generated_notes', examination_num + ".docx");
+            var generated_file_path = path.join(resources_root, 'generated_notes', req.params["file"]);
             if (fs.existsSync(generated_file_path)) {
                 logging.info(util.format('send cached download file : %s', generated_file_path));
                 res.sendfile(generated_file_path);
             }
             else {
+                generated_file_path = path.join(resources_root, 'generated_notes', examination_num + ".docx");
                 var doc = new docxtemplater(template);
                 var data = {
                     "name": detailed_info['XM'],
                     "college": detailed_info['FSXY'],
                     "major": detailed_info['FSZY'],
-                    "major_code": detailed_info['FSZYDM']
+                    "major_code": detailed_info['FSZYDM'],
+                    "cultivation": detailed_info['PYFS']
                 };
                 doc.setData(data);
                 logging.info(util.format('fill template with data : %j', data));
@@ -149,7 +152,8 @@ app.get("/:id_num/:examination_num/:username", function (req, res) {
             username: detailed_info['XM'],
             college: detailed_info['FSXY'],
             major: detailed_info['FSZY'],
-            major_code: detailed_info['FSZYDM']
+            major_code: detailed_info['FSZYDM'],
+            cultivation: detailed_info['PYFS']
         });
     }
     else {

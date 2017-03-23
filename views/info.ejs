@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>云南大学2016年招收硕士研究生复试通知书打印系统</title>
+    <title>云南大学2017年招收硕士研究生复试通知书打印系统</title>
     <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/stylesheets/style.css" rel="stylesheet"/>
     <script>
@@ -20,7 +20,7 @@
 <body>
 <div class="container">
     <!--
-    <p class="text-center lead">云南大学2016年招收硕士研究生复试通知书打印系统</p>
+    <p class="text-center lead">云南大学2017年招收硕士研究生复试通知书打印系统</p>
     -->
     <p class="text-center lead">基本信息</p>
     <div class="row">
@@ -49,21 +49,27 @@
                 <td>专业代码</td>
                 <td><span><%= major_code %></span></td>
             </tr>
+            <tr>
+                <td>培养方式</td>
+                <td><span><%= cultivation %></span></td>
+            </tr>
         </table>
     </div>
     <div class="row">
-        <p class="text-center lead"><strong>云南大学2016年招收硕士研究生复试通知书</strong></p>
+        <p class="text-center lead"><strong>云南大学2017年招收硕士研究生复试通知书</strong></p>
 
         <p class="text-indent"><strong><u>&nbsp;&nbsp;<%= username %>&nbsp;&nbsp;</u></strong>考生：</p>
 
-        <p class="text-indent">经审核,同意你参加我校&nbsp;&nbsp;<strong><u>&nbsp;&nbsp;<%= college %> <%= major %>(<%= major_code %>)&nbsp;&nbsp;</u></strong>&nbsp;&nbsp;专业硕士研究生复试。请持本通知按照“复试须知”要求按时到云南大学报到并参加复试（各专业复试具体时间和地点请查询我校研究生院网站）。</p>
+        <p class="text-indent">经审核,同意你参加我校&nbsp;&nbsp;<strong><u>&nbsp;&nbsp;<%= college %> (<%= major_code %>)<%= major %>(<%= cultivation %>)&nbsp;&nbsp;</u></strong>&nbsp;&nbsp;专业硕士研究生复试。请持本通知按照“复试须知”要求按时到云南大学报到并参加复试（各专业复试具体时间和地点请查询我校研究生院网站）。</p>
 
         <p class="text-right">云南大学研究生院招生办公</p>
 
-        <p class="text-right">2016年3月25日</p>
+        <p class="text-right">2017年3月24日</p>
     </div>
     <div class="row">
-        <a id="download_note" class="btn btn-primary" href="#" target="_blank">下载复试通知书</a>
+        <a id="download_docx_note" class="btn btn-primary" href="#" target="_blank">下载复试通知书(docx)</a>
+        <span>或</span>
+        <a id="download_pdf_note" class="btn btn-primary" href="#" target="_blank">下载复试通知书(pdf)</a>
     </div>
 </div>
 <script src="/libs/jquery/dist/jquery.min.js"></script>
@@ -71,8 +77,10 @@
 <script>
     $(function () {
         var current_location = window.location.href;
-        var attached_file_location = current_location + "/" + <%= examination_num %> + ".docx";
-        $("#download_note").attr('href', attached_file_location);
+        var attached_docx_file_location = current_location + "/" + <%= examination_num %> + ".docx";
+        var attached_pdf_file_location = current_location + "/" + <%= examination_num %> + ".pdf";
+        $("#download_docx_note").attr('href', attached_docx_file_location);
+        $("#download_pdf_note").attr('href', attached_pdf_file_location);
     });
 </script>
 </body>
