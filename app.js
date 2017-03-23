@@ -107,12 +107,13 @@ app.get("/:id_num/:examination_num/:username/:file", function (req, res) {
         else {
             // check cache file
             var generated_file_path = path.join(resources_root, 'generated_notes', req.params["file"]);
+            // file already prepared
             if (fs.existsSync(generated_file_path)) {
                 logging.info(util.format('send cached download file : %s', generated_file_path));
                 res.sendfile(generated_file_path);
             }
-            else {
-                generated_file_path = path.join(resources_root, 'generated_notes', examination_num + ".docx");
+            // docx file generation now
+            else if (generated_file_path.endsWith(".docx")){
                 var doc = new docxtemplater(template);
                 var data = {
                     "name": detailed_info['XM'],
@@ -129,6 +130,9 @@ app.get("/:id_num/:examination_num/:username/:file", function (req, res) {
                 fs.writeFileSync(generated_file_path, buf);
                 logging.info(util.format('finish create generated file : %s', generated_file_path));
                 res.sendfile(generated_file_path);
+            }
+            else {
+                res.render('info_pdf_not_prepared.ejs');
             }
         }
     }
