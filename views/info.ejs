@@ -68,8 +68,10 @@
     </div>
     <div class="row">
         <a id="download_docx_note" class="btn btn-primary" href="#" target="_blank">下载复试通知书(docx)</a>
+        <% if (pdf_prepared) { %>
         <span>或</span>
         <a id="download_pdf_note" class="btn btn-primary" href="#" target="_blank">下载复试通知书(pdf)</a>
+        <% } %>
     </div>
 </div>
 <script src="/libs/jquery/dist/jquery.min.js"></script>

@@ -150,6 +150,9 @@ app.get("/:id_num/:examination_num/:username", function (req, res) {
     // check if valid user
     var detailed_info = fastMap.get(examination_num);
     if (is_valid_user(detailed_info, examination_num, id_num, username)) {
+        pdf_prepared = fs.existsSync(path.join(resources_root, 'generated_notes', examination_num + '.pdf'));
+        logging.info(util.format('logging info-> pdf_path: %s', path.join(resources_root, 'generated_notes', examination_num + '.pdf')));
+        logging.info(util.format('logging info-> pdf_prepared: %s', pdf_prepared));
         res.render('info', {
             id_num: detailed_info['SFZH'],
             examination_num: detailed_info['ZKZH'],
@@ -157,7 +160,8 @@ app.get("/:id_num/:examination_num/:username", function (req, res) {
             college: detailed_info['FSXY'],
             major: detailed_info['FSZY'],
             major_code: detailed_info['FSZYDM'],
-            cultivation: detailed_info['PYFS']
+            cultivation: detailed_info['PYFS'],
+            pdf_prepared: pdf_prepared
         });
     }
     else {
