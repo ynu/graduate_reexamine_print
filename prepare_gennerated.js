@@ -29,7 +29,7 @@ var parse_xlsx_file = function () {
     // skip header
     for (var i = 1; i < data.length; i++) {
         var row = data[i];
-        if (row.length == 7) {
+        if (row.length >= 7) {
             var format_row = {
                 'ZKZH': row[0],
                 'SFZH': row[1],
