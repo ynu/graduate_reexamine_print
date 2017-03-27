@@ -11,3 +11,6 @@ resources/data.xlsx
 
 # mac meta data files
 **/.DS_Store
+
+# omit log files
+log_*
